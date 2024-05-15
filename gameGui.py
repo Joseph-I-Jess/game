@@ -36,13 +36,15 @@ class GameGui:
     def entry_entered(self, event):
         input = self.entry.get()
 
-        if input == "right":
+        # movement
+        player_coords = self.canvas.coords(self.player)
+        if input == "right" and player_coords[0] < self.canvas_width - self.cell_size:
             self.canvas.move(self.player, self.cell_size, 0) # move x and y distance of a given index in canvas
-        elif input == "left":
+        elif input == "left"  and player_coords[0] > self.cell_size:
             self.canvas.move(self.player, -self.cell_size, 0) # move x and y distance of a given index in canvas
-        elif input == "down":
+        elif input == "down" and player_coords[1] < self.canvas_height - self.cell_size:
             self.canvas.move(self.player, 0, self.cell_size) # move x and y distance of a given index in canvas
-        elif input == "up":
+        elif input == "up" and player_coords[1] > self.cell_size:
             self.canvas.move(self.player, 0, -self.cell_size) # move x and y distance of a given index in canvas
             
 
