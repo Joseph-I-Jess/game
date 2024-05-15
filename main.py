@@ -12,14 +12,16 @@ class GameGui:
         self.label.pack()
         self.entry.pack()
         self.button.pack()
-    
-        self.root.mainloop()
 
     def button_clicked(self):
         self.label.config(text=self.entry.get())
 
+    def run(self):
+        self.root.mainloop()
+
 def main():
     my_game = GameGui()
+    my_game.run()
 
 
 if __name__ == "__main__":
