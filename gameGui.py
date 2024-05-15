@@ -7,12 +7,12 @@ class GameGui:
 
         self.label = tkinter.Label(master=self.root, text="this is a label")
         self.entry = tkinter.Entry(master=self.root)
-        self.entry.bind("<Return>", self.button_clicked)
+        self.entry.bind("<Return>", self.entry_entered)
 
         self.label.pack()
         self.entry.pack()
 
-    def button_clicked(self, event):
+    def entry_entered(self, event):
         self.label.config(text=self.entry.get())
 
     def run(self):
