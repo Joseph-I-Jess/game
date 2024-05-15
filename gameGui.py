@@ -14,7 +14,7 @@ class GameGui:
         self.root = tkinter.Tk()
         self.root.geometry(f"{self.width}x{self.height}")
 
-        self.label = tkinter.Label(master=self.root, text="type a dcommand and press return (enter)")
+        self.label = tkinter.Label(master=self.root, text="type a command and press return (enter)")
         self.entry = tkinter.Entry(master=self.root)
         self.entry.bind("<Return>", self.entry_entered)
         self.canvas = tkinter.Canvas(master=self.root, width=self.canvas_width, height=self.canvas_height, background="darkgray")
