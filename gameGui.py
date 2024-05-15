@@ -2,7 +2,11 @@ import tkinter
 
 class GameGui:
 
-    def __init__(self):
+    def __init__(self, map_cell_locations=[]):
+        """
+        params:
+            map_data: a list of (x,y) pairs that represent where map cells should be drawn
+        """
         self.width = 800
         self.height = 600
 
@@ -10,6 +14,7 @@ class GameGui:
         self.canvas_height = 400
         
         self.cell_size = 50 # size of a cell in our game
+        self.cell_buffer = 2 # buffer away from edge of canvas?
         
         self.root = tkinter.Tk()
         self.root.geometry(f"{self.width}x{self.height}")
@@ -19,11 +24,14 @@ class GameGui:
         self.entry.bind("<Return>", self.entry_entered)
         self.canvas = tkinter.Canvas(master=self.root, width=self.canvas_width, height=self.canvas_height, background="darkgray")
 
-        # draw grid
-        for row in range(0, self.canvas_height, self.cell_size): # recall that range is exclusive of its upper end!
-            self.canvas.create_line(0, row,  self.canvas_width, row)
-        for column in range(0, self.canvas_width, self.cell_size):
-            self.canvas.create_line(column, 0, column, self.canvas_height)
+        # draw grid of map cells
+        for map_cell_location in map_cell_locations:
+            # recall that the locations are in cell placement, so we need to multiply the location data by the size of a cell!
+            self.canvas.create_rectangle(
+                (map_cell_location[0] * self.cell_size) + self.cell_buffer,
+                (map_cell_location[1] * self.cell_size) + self.cell_buffer,
+                (map_cell_location[0] * self.cell_size) + self.cell_size + self.cell_buffer,
+                (map_cell_location[1] * self.cell_size) + self.cell_size + self.cell_buffer)
 
         self.player = self.canvas.create_rectangle(10, 10, 30, 50, fill="green") # canvas created objects start at index 1
 
