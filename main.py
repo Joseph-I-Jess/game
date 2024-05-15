@@ -3,20 +3,20 @@ import tkinter
 class GameGui:
 
     def __init__(self):
-        root = tkinter.Tk()
+        self.root = tkinter.Tk()
 
-        label = tkinter.Label(master=root, text="this is a label")
-        entry = tkinter.Entry(master=root)
-        button = tkinter.Button(master= root, text="click the button!", command=lambda: self.button_clicked(label, entry))
+        self.label = tkinter.Label(master=self.root, text="this is a label")
+        self.entry = tkinter.Entry(master=self.root)
+        self.button = tkinter.Button(master= self.root, text="click the button!", command=self.button_clicked)
 
-        label.pack()
-        entry.pack()
-        button.pack()
+        self.label.pack()
+        self.entry.pack()
+        self.button.pack()
     
-        root.mainloop()
+        self.root.mainloop()
 
-    def button_clicked(self, label, entry):
-        label.config(text=entry.get())
+    def button_clicked(self):
+        self.label.config(text=self.entry.get())
 
 def main():
     my_game = GameGui()
