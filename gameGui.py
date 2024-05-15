@@ -46,7 +46,6 @@ class GameGui:
             self.canvas.move(self.player, 0, self.cell_size) # move x and y distance of a given index in canvas
         elif input == "up" and player_coords[1] > self.cell_size:
             self.canvas.move(self.player, 0, -self.cell_size) # move x and y distance of a given index in canvas
-            
 
     def run(self):
         self.root.mainloop()

@@ -1,7 +1,8 @@
-import gameGui
+import game
 
 def main():
-    my_game = gameGui.GameGui()
+
+    my_game = game.Game(map_name="Example Map!", map_description="Just an example map!")
     my_game.run()
 
 
